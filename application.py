@@ -1,22 +1,15 @@
-from crypt import methods
-from email.mime import application
-from flask import(
-    Flask, render_template
-)
+from flask import Flask
 
-# Initialize the app
 application = Flask(__name__)
 
-# Homepage
-@application.route("/", methods= ['GET', 'POST'])
-def viz_page():
-    """
-    Homepage: serve up vizualization page, index.html
-    """
-    
-    return render_template('index.html')
+@application.route("/")
+def index():
+    return "Your Flask App Works!"
+
+@application.route("/hello")
+def hello():
+    return "Hello World!"
 
 
-# Run the app
 if __name__ == "__main__":
-    application.run()
+    application.run(port=5000, debug=True)
